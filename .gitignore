@@ -5,8 +5,9 @@ __pycache__/
 
 # Custom Extensions
 solar.key
-.key
-.csv
+weather.key
+*.key
+*.csv
 
 # C extensions
 *.so
