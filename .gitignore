@@ -5,6 +5,7 @@ __pycache__/
 
 # Custom Extensions
 *.key
+*.csv
 
 # C extensions
 *.so

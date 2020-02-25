@@ -3,6 +3,11 @@ import time
 
 
 def gather_weather():
+
+    """
+    :return: dict
+    """
+
     url = None
     try:
         file = open("weather.key", "r")
@@ -35,6 +40,5 @@ def gather_weather():
 
         else:
             print("ERROR: API call returned " + response.status_code)
-    for x in weather:
-        print(x)
+
     return weather
