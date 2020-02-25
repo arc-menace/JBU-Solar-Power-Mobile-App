@@ -3,6 +3,11 @@ import time
 
 
 def gather_solar():
+
+    """
+    :return: dict
+    """
+
     key = None
     try:
         file = open("solar.key", "r")
@@ -39,6 +44,5 @@ def gather_solar():
 
         else:
             print("ERROR: API call returned " + response.status_code)
-    for x in solar:
-        print(x)
+
     return solar
