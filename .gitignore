@@ -4,8 +4,9 @@ __pycache__/
 *$py.class
 
 # Custom Extensions
-*.key
-*.csv
+solar.key
+.key
+.csv
 
 # C extensions
 *.so
