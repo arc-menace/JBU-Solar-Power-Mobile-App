@@ -25,12 +25,12 @@ def gather_solar():
             # convert data to json for parsing
             solar_raw = response.json()
 
-            solar["current_power"] = solar_raw["current_power"]
-            solar["energy_today"] = solar_raw["energy_today"]
-            solar["energy_lifetime"] = solar_raw["energy_lifetime"]
-            solar["summary_date"] = solar_raw["summary_date"]
-            solar["status"] = solar_raw["status"]
-            # There will be multiple CSV entries per day
+            solar["current_power"] = solar_raw["current_power"]      # in Wh
+            solar["energy_today"] = solar_raw["energy_today"]        # in Wh
+            solar["energy_lifetime"] = solar_raw["energy_lifetime"]  # in Wh
+            solar["summary_date"] = solar_raw["summary_date"]        # in yyyy-mm-dd
+            solar["status"] = solar_raw["status"]                    # ex. "normal"
+            # There will be multiple data entries per day
             # so a timestamp is necessary to differentiate
             solar["time"] = time.time()
 
@@ -39,5 +39,6 @@ def gather_solar():
 
         else:
             print("ERROR: API call returned " + response.status_code)
-
+    for x in solar:
+        print(x)
     return solar
