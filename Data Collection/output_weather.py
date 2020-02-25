@@ -1,3 +1,6 @@
+import os
+
+
 def output_weather(weather):
 
     """
@@ -6,6 +9,10 @@ def output_weather(weather):
     """
 
     weather_csv = "weather.csv"
+    if os.stat(weather_csv).st_size == 0:
+        w_write = open(weather_csv, "w")
+        w_write.write("description,temp,wind_speed,clouds,time,\n")
+        w_write.close()
 
     try:
         with open(weather_csv, 'a', newline="") as csv_file:

@@ -40,9 +40,9 @@ def gather_solar():
             solar["time"] = time.time()
 
         elif response.status_code == 401:
-            print("ERROR" + response.status_code + ": User not properly authenticate. Check API key.")
+            print("ERROR " + str(response.status_code) + ": User not properly authenticate. Check API key.")
 
         else:
-            print("ERROR: API call returned " + response.status_code)
+            print("ERROR: API call returned " + str(response.status_code))
 
     return solar
