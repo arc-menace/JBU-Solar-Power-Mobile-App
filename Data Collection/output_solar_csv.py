@@ -1,7 +1,7 @@
 import os
 
 
-def output_solar(solar):
+def output_solar_csv(solar):
 
     """
     :param solar: dict

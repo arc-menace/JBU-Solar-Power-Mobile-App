@@ -17,7 +17,7 @@ class Solar(models.Model):
     current_power = models.FloatField()
     energy_today = models.FloatField()
     energy_lifetime = models.FloatField()
-    summary_date = models.DateTimeField()
+    summary_date = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
     time = models.TimeField(auto_now=True)
 

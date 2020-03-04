@@ -1,7 +1,7 @@
 import os
 
 
-def output_weather(weather):
+def output_weather_csv(weather):
 
     """
     :param weather: dict

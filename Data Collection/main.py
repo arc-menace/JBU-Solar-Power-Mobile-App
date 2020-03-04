@@ -1,12 +1,17 @@
 import gather_weather
-import output_weather
+import output_weather_csv
 import gather_solar
-import output_solar
+import output_solar_csv
+import post_solar
+import post_weather
 
+post_weather.post_weather()
 
-weather = gather_weather.gather_weather()
+#post_solar.post_solar()
 
-output_weather.output_weather(weather)
+#weather = gather_weather.gather_weather()
 
-solar = gather_solar.gather_solar()
-output_solar.output_solar(solar)
+#output_weather_csv.output_weather_csv(weather)
+
+#solar = gather_solar.gather_solar()
+#output_solar_csv.output_solar_csv(solar)
