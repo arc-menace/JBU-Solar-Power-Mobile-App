@@ -11,8 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('/home/ubuntu/ee3503-project/hotelhound')
-sys.path.append('/home/ubuntu/ee3503-project/hotelhound/hotelhound')
+sys.path.append('/home/ubuntu/EE-3503-01-Final-Project/jbupower')
+sys.path.append('/home/ubuntu/EE-3503-01-Final-Project/jbupower/jbupower')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jbupower.settings')
 
