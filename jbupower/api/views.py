@@ -1,7 +1,8 @@
-from django.shortcuts import render
+import datetime
+from django.http import HttpResponse
 from rest_framework import generics, viewsets
-from .models import Weather,Solar
-from .serializers import WeatherSerializer,SolarSerializer
+from .models import Weather, Solar
+from .serializers import WeatherSerializer, SolarSerializer
 
 
 # Create your views here.
@@ -33,3 +34,8 @@ class SolarDetail(generics.RetrieveUpdateDestroyAPIView):
 class SolarViewSet(viewsets.ModelViewSet):
     queryset = Solar.objects.all().order_by('-time')
     serializer_class = SolarSerializer
+
+def index(request):
+    now = datetime.datetime.now()
+    html = "<html><body><h1>Test Text</h1><p>Current time is %s.</p></body></html>" % now
+    return HttpResponse(html)

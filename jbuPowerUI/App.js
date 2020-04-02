@@ -10,8 +10,9 @@ export default function App() {
     <View style={styles.screen}>
       <Header title="JBU Solar Power" />
       <Text style={styles.text}>Joseph Hahn</Text>
+      <Text style={styles.text}>Not much here yet, so play with this switch</Text>
       <Switch
-        style={styles.screen}
+        style={styles.switch}
         trackColor={{ false: "#767577", true: "#81b0ff" }}
         thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
         ios_backgroundColor="#3e3e3e"
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   text: {
     flex: 1,
@@ -34,5 +35,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     backgroundColor: 'white'
+  },
+  switch: {
+    alignSelf: 'center',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    height: 600
   }
 });

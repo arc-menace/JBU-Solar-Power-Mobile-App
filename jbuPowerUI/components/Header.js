@@ -5,7 +5,7 @@ import Colors from "../constants/colors";
 
 const Header = props => {
   return (
-    <View style={{ ...styles.headerBase, ...Platform.select({ios: styles.headerIOS, android: styles.headerAndroid})}} >
+    <View style={{ ...styles.headerBase, ...Platform.select({ios: styles.headerIOS, android: styles.headerAndroid, web: styles.headerBase})}} >
       <Text style={styles.headerTitle}>{props.title}</Text>
     </View>
   );
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
   },
   headerIOS: {
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     borderBottomColor: '#ccc',
     borderBottomWidth: 1,
   },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   headerTitle: {
-    color: Platform.OS === 'ios' ? Colors.primary : 'white',
+    color: Platform.OS === 'ios' ? Colors.primary : 'black',
     fontSize: 24
   },
 });

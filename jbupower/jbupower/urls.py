@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from rest_framework import permissions
+
+from api import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^api-auth/', include('rest_framework.urls')),
     path('api/', include('api.urls')),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('', views.index, name='index')
 ]
