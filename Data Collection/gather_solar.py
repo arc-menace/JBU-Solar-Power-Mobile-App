@@ -1,6 +1,6 @@
 import requests
 import time
-
+import os
 
 def gather_solar():
 
@@ -10,7 +10,9 @@ def gather_solar():
 
     key = None
     try:
-        file = open("solar.key", "r")
+        here = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(here, 'solar.key')
+        file = open(filename, "r")
         key = file.readline()
     except Exception as e:
         print("ERROR: " + str(e))

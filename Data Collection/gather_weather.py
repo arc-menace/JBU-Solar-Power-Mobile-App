@@ -1,5 +1,6 @@
 import requests
 import time
+import os
 
 
 def gather_weather():
@@ -10,7 +11,9 @@ def gather_weather():
 
     url = None
     try:
-        file = open("weather.key", "r")
+        here = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(here, 'weather.key')
+        file = open(filename, "r")
         url = file.readline()
     except Exception as e:
         print("ERROR: " + str(e))

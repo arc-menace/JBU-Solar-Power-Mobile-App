@@ -1,13 +1,15 @@
 import gather_solar as gs
 import requests
 import json
-
+import os
 
 def post_solar():
     data = gs.gather_solar()
     api_key = None
     try:
-        file = open("api.key", "r")
+        here = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(here, 'api.key')
+        file = open(filename, "r")
         api_key = file.readline()
     except Exception as e:
         print("ERROR: " + str(e))
