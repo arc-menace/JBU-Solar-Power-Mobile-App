@@ -5,9 +5,9 @@ import output_solar_csv
 import post_solar
 import post_weather
 
-post_weather.post_weather()
+#post_weather.post_weather()
 
-#post_solar.post_solar()
+post_solar.post_solar()
 
 #weather = gather_weather.gather_weather()
 
