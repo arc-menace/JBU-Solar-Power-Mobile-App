@@ -17,20 +17,19 @@ def post_solar():
 
     try:
         here = os.path.dirname(os.path.abspath(__file__))
-        filename = os.path.join(here, 'post.url')
+        filename = os.path.join(here, 'post.url') #server will use different url
         file = open(filename, "r")
         url = file.readline()
     except Exception as e:
         print("ERROR: " + str(e))
 
     if api_key is not None and url is not None:
-        url += "solar/"
         headers = {
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': "Token " + api_key
         }
         json_data = json.dumps(data)
-        req = requests.Request('POST', url, data=json_data, headers=headers)
+        req = requests.Request('POST', url + "solar/", data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
         print("DEBUG: POST Body: " + str(prepared.body))
