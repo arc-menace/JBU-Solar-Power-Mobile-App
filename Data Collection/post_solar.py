@@ -6,6 +6,7 @@ import os
 def post_solar():
     data = gs.gather_solar()
     api_key = None
+    url = None
     try:
         here = os.path.dirname(os.path.abspath(__file__))
         filename = os.path.join(here, 'api.key')
@@ -13,13 +14,21 @@ def post_solar():
         api_key = file.readline()
     except Exception as e:
         print("ERROR: " + str(e))
-    if api_key is not None:
+
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        filename = os.path.join(here, 'post.url')
+        file = open(filename, "r")
+        url = file.readline()
+    except Exception as e:
+        print("ERROR: " + str(e))
+
+    if api_key is not None and url is not None:
         headers = {
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': "Token " + api_key
         }
         json_data = json.dumps(data)
-        url = "http://127.0.0.1:8000/api/solar/"
         req = requests.Request('POST', url, data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
