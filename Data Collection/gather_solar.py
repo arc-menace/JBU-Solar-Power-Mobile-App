@@ -31,7 +31,6 @@ def gather_solar():
         if response.status_code == 200:
             # convert data to json for parsing
             solar_raw = response.json()
-            print("Success")
             solar["current_power"] = solar_raw["current_power"]      # in Wh
             solar["energy_today"] = solar_raw["energy_today"]        # in Wh
             solar["energy_lifetime"] = solar_raw["energy_lifetime"]  # in Wh
