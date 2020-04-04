@@ -21,6 +21,7 @@ def post_solar():
         filename = os.path.join(here, 'post.url') #server will use different url
         file = open(filename, "r")
         url = file.readline()
+        url.replace('\n', '')
     except Exception as e:
         print("ERROR: " + str(e))
 
@@ -30,8 +31,10 @@ def post_solar():
             'Authorization': "Token " + api_key
         }
         json_data = json.dumps(data)
-        print(url + "solar/")
-        req = requests.Request('POST', url + "solar/", data=json_data, headers=headers)
+        url += "solar/"        
+        url.replace('\n', '')
+        print(url)
+        req = requests.Request('POST', url, data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
         print("DEBUG: POST Body: " + str(prepared.body))
