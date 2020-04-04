@@ -13,8 +13,7 @@ def post_weather():
         here = os.path.dirname(os.path.abspath(__file__))
         filename = os.path.join(here, 'api.key')
         file = open(filename, "r")
-        api_key = file.readline()
-        api_key.replace('\n', '')
+        api_key = str(file.readline().strip())
     except Exception as e:
         print("ERROR: " + str(e))
 
@@ -22,8 +21,7 @@ def post_weather():
         here = os.path.dirname(os.path.abspath(__file__))
         filename = os.path.join(here, 'post.url') #server will use different url
         file = open(filename, "r")
-        url = file.readline()
-        url.replace('\n', '')
+        url = str(file.readline().strip())
     except Exception as e:
         print("ERROR: " + str(e))
 
@@ -34,9 +32,8 @@ def post_weather():
         }
         json_data = json.dumps(data)
         url += "weather/"
-        url.replace('\n', '')
         print(url)
-        req = requests.Request('POST', url + "weather/", data=json_data, headers=headers)
+        req = requests.Request('POST', url, data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
         print("DEBUG: POST Body: " + str(prepared.body))

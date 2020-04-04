@@ -12,7 +12,7 @@ def post_solar():
         here = os.path.dirname(os.path.abspath(__file__))
         filename = os.path.join(here, 'api.key')
         file = open(filename, "r")
-        api_key = file.readline().strip()
+        api_key = str(file.readline().strip())
     except Exception as e:
         print("ERROR: " + str(e))
 
@@ -20,7 +20,7 @@ def post_solar():
         here = os.path.dirname(os.path.abspath(__file__))
         filename = os.path.join(here, 'post.url') #server will use different url
         file = open(filename, "r")
-        url = file.readline().strip
+        url = str(file.readline().strip())
     except Exception as e:
         print("ERROR: " + str(e))
 
@@ -31,7 +31,7 @@ def post_solar():
             'Authorization': authorization
         }
         json_data = json.dumps(data)
-        url += "solar/"        
+        url += "solar/"
         print(url)
         req = requests.Request('POST', url, data=json_data, headers=headers)
         prepared = req.prepare()
