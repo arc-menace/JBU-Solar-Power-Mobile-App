@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text, Platform } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 import Colors from "../constants/colors";
 
 const Header = props => {
   return (
-    <View style={{ ...styles.headerBase, ...Platform.select({ios: styles.headerIOS, android: styles.headerAndroid, web: styles.headerBase})}} >
+    <View style={styles.headerBase} >
       <Text style={styles.headerTitle}>{props.title}</Text>
     </View>
   );
@@ -13,24 +13,18 @@ const Header = props => {
 
 const styles = StyleSheet.create({
   headerBase: {
-    width: "100%",
-    height: 90,
-    paddingTop: 36,
+    flex: 1,
+    flexDirection: 'column',
+    width: '100%',
+    height: 30,
     alignItems: "center",
     justifyContent: "center",
-
-  },
-  headerIOS: {
-    backgroundColor: 'black',
-    borderBottomColor: '#ccc',
-    borderBottomWidth: 1,
-  },
-  headerAndroid: {
     backgroundColor: Colors.primary,
   },
   headerTitle: {
-    color: Platform.OS === 'ios' ? Colors.primary : 'black',
-    fontSize: 24
+    
+    color: 'white',
+    fontSize: 48
   },
 });
 

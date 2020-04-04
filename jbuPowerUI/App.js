@@ -8,17 +8,27 @@ export default function App() {
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
     <View style={styles.screen}>
-      <Header title="JBU Solar Power" />
-      <Text style={styles.text}>Joseph Hahn</Text>
-      <Text style={styles.text}>Not much here yet, so play with this switch</Text>
-      <Switch
-        style={styles.switch}
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
+
+      <View style={styles.header}>
+        <Header title="JBU Solar Power" />
+      </View>
+
+      <View style={{flex: 2}}>
+        <Text style={styles.text}>Joseph Hahn</Text>
+        <Text style={styles.text}>Not much here yet, but you can play with this switch</Text>
+      </View>
+
+      <View style={{flex: 5}}>
+        <Switch
+          style={styles.switch}
+          trackColor={{ false: "#81b0ff", true: "#81b0ff" }}
+          thumbColor={isEnabled ? "#f5dd4b" : "#f5dd4b"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+      </View>
+      
     </View>
   );
 }
@@ -26,20 +36,21 @@ export default function App() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center"
   },
   text: {
-    flex: 1,
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 36,
     backgroundColor: 'white'
   },
   switch: {
     alignSelf: 'center',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: 600
+    justifyContent: 'center',
+    height: 400
+  },
+  header: {
+    flex: 1,
   }
 });
