@@ -30,9 +30,8 @@ def post_solar():
             'Authorization': "Token " + api_key
         }
         json_data = json.dumps(data)
-        url += "solar/"
-        print(url)
-        req = requests.Request('POST', url, data=json_data, headers=headers)
+        print(url + "solar/")
+        req = requests.Request('POST', url + "solar/", data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
         print("DEBUG: POST Body: " + str(prepared.body))

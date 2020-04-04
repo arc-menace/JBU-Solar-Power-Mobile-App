@@ -31,9 +31,8 @@ def post_weather():
             'Authorization': "Token " + api_key
         }
         json_data = json.dumps(data)
-        url += "weather/"
-        print(url)
-        req = requests.Request('POST', url, data=json_data, headers=headers)
+        print(url + "weather/")
+        req = requests.Request('POST', url + "weather/", data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
         print("DEBUG: POST Body: " + str(prepared.body))
