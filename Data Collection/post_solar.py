@@ -24,6 +24,7 @@ def post_solar():
         print("ERROR: " + str(e))
 
     if api_key is not None and url is not None:
+        url += "solar/"
         headers = {
             'Content-Type': 'application/json; charset=UTF-8',
             'Authorization': "Token " + api_key
