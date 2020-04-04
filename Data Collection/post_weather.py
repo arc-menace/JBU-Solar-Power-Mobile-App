@@ -5,6 +5,7 @@ import os
 
 
 def post_weather():
+    print("DEBUG: start weather")
     data = ws.gather_weather()
     api_key = None
     url = None
@@ -30,7 +31,9 @@ def post_weather():
             'Authorization': "Token " + api_key
         }
         json_data = json.dumps(data)
-        req = requests.Request('POST', url + "weather/", data=json_data, headers=headers)
+        url += "weather/"
+        print(url)
+        req = requests.Request('POST', url, data=json_data, headers=headers)
         prepared = req.prepare()
         print("DEBUG: POST Headers: " + str(prepared.headers))
         print("DEBUG: POST Body: " + str(prepared.body))
@@ -42,3 +45,5 @@ def post_weather():
         print("DEBUG: Response Data: " + str(response.json()))
     else:
         print("DEBUG: Error with API key")
+
+    print("DEBUG: end weather")
