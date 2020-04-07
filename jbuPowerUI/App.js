@@ -4,26 +4,29 @@ import { StyleSheet, Text, View, Switch, Dimensions, Button, Alert } from 'react
 import { LineChart } from "react-native-chart-kit";
 import Header from "./components/Header";
 import Colors from "./constants/colors";
-import Font from 'expo-font';
-import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
+import { AppLoading, Font } from "expo";
 
-const fetchData = () => {
+function fetchData() {
   return Font.loadAsync({
-    robosto: require('./assets/fonts/Roboto-Regular.ttf')
+    roboto: require('./assets/fonts/roboto.tff')
   });
 }
 
 export default function App() {
-  const [dataLoaded, setDataLoaded] = useState(false);
-  if(!dataLoaded){
-    return(
-      <AppLoading 
-        startAsync = { fetchData } 
-        onFinish = { () => setDataLoaded(true)} 
-        onError = { err => console.log(err)}
-      />
+  const[dataLoaded, setDataLoaded] = useState(false);
+
+  if(!dataLoaded) {
+    return (
+      <AppLoading>
+        startAsync={fetchData}
+        onFinish={() => setDataLoaded(true)}
+        onError={err => console.log(err)}
+      </AppLoading>
     );
   }
+
+
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [randomData, setRandomData] = useState([
@@ -146,8 +149,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 36,
-    backgroundColor: 'white',
-    fontFamily: 'roboto'
+    backgroundColor: 'white'
   },
   switch: {
     alignSelf: 'center',
