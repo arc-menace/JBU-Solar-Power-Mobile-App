@@ -4,9 +4,26 @@ import { StyleSheet, Text, View, Switch, Dimensions, Button, Alert } from 'react
 import { LineChart } from "react-native-chart-kit";
 import Header from "./components/Header";
 import Colors from "./constants/colors";
+import Font from 'expo-font';
+import { AppLoading } from 'expo';
 
+const fetchData = () => {
+  return Font.loadAsync({
+    robosto: require('./assets/fonts/Roboto-Regular.ttf')
+  });
+}
 
 export default function App() {
+  const [dataLoaded, setDataLoaded] = useState(false);
+  if(!dataLoaded){
+    return(
+      <AppLoading 
+        startAsync = { fetchData } 
+        onFinish = { () => setDataLoaded(true)} 
+        onError = { err => console.log(err)}
+      />
+    );
+  }
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [randomData, setRandomData] = useState([
@@ -84,7 +101,7 @@ export default function App() {
               labels: ["January", "February", "March", "April", "May", "June"],
               datasets: [{ data: randomData }]
             }}
-            width={Math.floor(Dimensions.get("window").width * 0.6)} // from react-native
+            width={Math.floor(Dimensions.get("window").width * 0.9)} // from react-native
             height={220}
             yAxisLabel="$"
             yAxisSuffix="k"
@@ -129,7 +146,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 36,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    fontFamily: 'roboto'
   },
   switch: {
     alignSelf: 'center',
