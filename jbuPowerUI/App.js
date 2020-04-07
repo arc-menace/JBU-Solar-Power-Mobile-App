@@ -5,11 +5,11 @@ import { LineChart } from "react-native-chart-kit";
 import Header from "./components/Header";
 import Colors from "./constants/colors";
 import * as Font from 'expo-font';
-import { AppLoading, Font } from "expo";
+import { AppLoading } from "expo";
 
-function fetchData() {
+const fetchData = () => {
   return Font.loadAsync({
-    roboto: require('./assets/fonts/roboto.tff')
+    roboto: require('./assets/fonts/roboto.ttf')
   });
 }
 
@@ -18,11 +18,13 @@ export default function App() {
 
   if(!dataLoaded) {
     return (
-      <AppLoading>
-        startAsync={fetchData}
-        onFinish={() => setDataLoaded(true)}
+      <View>
+      <AppLoading
+        startAsync={fetchData}        
         onError={err => console.log(err)}
-      </AppLoading>
+        onFinish={() => setDataLoaded(true)}
+      />
+      </View>
     );
   }
 
