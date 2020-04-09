@@ -1,5 +1,5 @@
 import requests
-import time
+import datetime
 import os
 
 def gather_solar():
@@ -38,7 +38,7 @@ def gather_solar():
             solar["status"] = solar_raw["status"]                    # ex. "normal"
             # There will be multiple data entries per day
             # so a timestamp is necessary to differentiate
-            solar["time"] = time.time()
+            solar["time"] = str(datetime.datetime.now())
 
         elif response.status_code == 401:
             print("ERROR " + str(response.status_code) + ": User not properly authenticate. Check API key.")

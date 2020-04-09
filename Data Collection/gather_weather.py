@@ -1,5 +1,5 @@
 import requests
-import time
+import datetime
 import os
 
 
@@ -36,7 +36,7 @@ def gather_weather():
             weather["clouds"] = weather_raw["clouds"]["all"]            # percentage cloud cover
             # There will be multiple data entries per day
             # so a timestamp is necessary to differentiate
-            weather["time"] = time.time()
+            weather["time"] = str(datetime.datetime.now())
 
         elif response.status_code == 401:
             print("ERROR " + str(response.status_code) + ": User not properly authenticate. Check API key.")

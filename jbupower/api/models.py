@@ -7,7 +7,7 @@ class Weather(models.Model):
     temp = models.FloatField()
     wind_speed = models.FloatField()
     clouds = models.IntegerField()
-    time = models.TimeField()
+    time = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.description)
@@ -19,7 +19,7 @@ class Solar(models.Model):
     energy_lifetime = models.FloatField()
     summary_date = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
-    time = models.TimeField()
+    time = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.current_power)

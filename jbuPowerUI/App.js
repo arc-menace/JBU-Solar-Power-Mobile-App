@@ -7,6 +7,8 @@ import Graph from "./components/Graph"
 
 
 export default function App() {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [randomData, setRandomData] = useState([
     Math.random() * 100,
     Math.random() * 100,
@@ -70,7 +72,7 @@ export default function App() {
 
   function set_time_axis(){
     var i_time_axis = [];
-    for(var i = 1; i <= 3; i++){
+    for(var i = 1; i <=12; i++){
       var time = new Date().getHours() + 1 - i;
       if(time >= 12){
         if(time > 12){

@@ -18,17 +18,20 @@ const Graph = props => {
           <LineChart
             data={{
               labels: props.time_axis,
-              datasets: [{ data: props.solarData }, {data: props.percent_clouds}, {data: props.temp}]
+              datasets: [
+                {data: props.solarData, color: (opacity = 1) => `rgba(235, 231, 12, ${opacity})`}, 
+                {data: props.percent_clouds, color: (opacity = 1) => `rgba(212, 212, 212, ${opacity})`}, 
+                {data: props.temp, color: (opacity = 1) => `rgba(230, 68, 14, ${opacity})`}
+              ]
             }}
-            width={1300} // from react-native
-            height={220}
+            width={Math.floor(Dimensions.get("window").width * 0.9)} // from react-native
+            height={300}
             yAxisLabel=""
             yAxisSuffix="kWh"
             yAxisInterval={1} // optional, defaults to 1
+            fromZero={true}
             chartConfig={{
-              backgroundColor: "#e26a00",
-              backgroundGradientFrom: "#fb8c00",
-              backgroundGradientTo: "#ffa726",
+              backgroundGradientFrom: Colors.primary,
               decimalPlaces: 2, // optional, defaults to 2dp
               color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
               labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -36,15 +39,15 @@ const Graph = props => {
                 borderRadius: 10
               },
               propsForDots: {
-                r: "6",
+                r: "8",
                 strokeWidth: "2",
-                stroke: "#ffa726"
+                stroke: Colors.secondary
               }
             }}
             bezier 
             style={{
               marginVertical: 8,
-              borderRadius: 16
+              borderRadius: 6
             }}
           />
         </ScrollView>
