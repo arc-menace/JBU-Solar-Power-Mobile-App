@@ -1,36 +1,12 @@
 import * as React from 'react';
 import {useState} from 'react';
 import { StyleSheet, Text, View, Switch, Dimensions, Button, Alert } from 'react-native';
-import { LineChart } from "react-native-chart-kit";
 import Header from "./components/Header";
 import Colors from "./constants/colors";
-import * as Font from 'expo-font';
-import { AppLoading } from "expo";
+import Graph from "./components/Graph"
 
-const fetchData = () => {
-  return Font.loadAsync({
-    roboto: require('./assets/fonts/roboto.ttf')
-  });
-}
 
 export default function App() {
-  const[dataLoaded, setDataLoaded] = useState(false);
-
-  if(!dataLoaded) {
-    return (
-      <View>
-      <AppLoading
-        startAsync={fetchData}        
-        onError={err => console.log(err)}
-        onFinish={() => setDataLoaded(true)}
-      />
-      </View>
-    );
-  }
-
-
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [randomData, setRandomData] = useState([
     Math.random() * 100,
     Math.random() * 100,
@@ -45,6 +21,35 @@ export default function App() {
     Math.random() * 100,
     Math.random() * 100                
   ]);
+  
+  const randomDataB = [
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100                
+  ];
+  const randomDataC = [
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100                
+  ];
 
   function refresh_data(){
     setRandomData([
@@ -63,27 +68,39 @@ export default function App() {
     ])
   }
 
+  function set_time_axis(){
+    var i_time_axis = [];
+    for(var i = 1; i <= 3; i++){
+      var time = new Date().getHours() + 1 - i;
+      if(time >= 12){
+        if(time > 12){
+          time -= 12;
+        }
+        time.toString();
+        time += ":00 PM";
+      }
+      if(time < 12 && time >= 0){
+        if(time == 0){
+          time = 12;
+        }
+        time.toString();
+        time += ":00 AM";
+      }
+      if(time < 0){
+        time += 12;
+        time.toString();
+        time += ":00 PM";
+      }
+      i_time_axis.push(time);
+    }
+    return i_time_axis.reverse();
+  }
+
   return (
     <View style={styles.screen}>
 
       <View style={styles.header}>
         <Header title="JBU Solar Power" />
-      </View>
-
-      <View style={{flex: 1}}>
-        <Text style={styles.text}>Joseph Hahn</Text>
-        <Text style={styles.text}>Not much here yet, but you can play with this switch</Text>
-      </View>
-
-      <View style={{flex: 1}}>
-        <Switch
-          style={styles.switch}
-          trackColor={{ false: "#81b0ff", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f5dd4b"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}
-          value={isEnabled}
-        />
       </View>
 
       <View style = {styles.button}>
@@ -93,48 +110,15 @@ export default function App() {
           onPress={refresh_data}
         />
       </View>
-      
+
       <View style = {styles.graph}>
-
-        <View style = {{flex: 1}}>
-          <Text style = {styles.text}>Bezier Line Chart</Text>
-        </View>
-
-        <View style={{flex: 2}}>
-          <LineChart
-            data={{
-              labels: ["January", "February", "March", "April", "May", "June"],
-              datasets: [{ data: randomData }]
-            }}
-            width={Math.floor(Dimensions.get("window").width * 0.9)} // from react-native
-            height={220}
-            yAxisLabel="$"
-            yAxisSuffix="k"
-            yAxisInterval={1} // optional, defaults to 1
-            chartConfig={{
-              backgroundColor: "#e26a00",
-              backgroundGradientFrom: "#fb8c00",
-              backgroundGradientTo: "#ffa726",
-              decimalPlaces: 2, // optional, defaults to 2dp
-              color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              style: {
-                borderRadius: 16
-              },
-              propsForDots: {
-                r: "6",
-                strokeWidth: "2",
-                stroke: "#ffa726"
-              }
-            }}
-            bezier
-            style={{
-              marginVertical: 8,
-              borderRadius: 16
-            }}
-          />
-        </View>
-
+        <Graph 
+          solarData={randomData} 
+          percent_clouds={randomDataB} 
+          temp={randomDataC} 
+          time_axis={set_time_axis()} 
+          textStyle={styles.text} 
+          title={"Graph Title"}/>
       </View>
 
     </View>
@@ -151,7 +135,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 36,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    fontFamily: 'roboto'
   },
   switch: {
     alignSelf: 'center',
