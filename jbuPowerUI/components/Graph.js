@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Dimensions, ScrollView } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import Colors from "../constants/colors";
-import DataToggle from "./DataToggle"
+import Refresh from "./Refresh"
 
 //Props:
 //textStyle, title, time_axis, data
@@ -95,21 +95,14 @@ const Graph = props => {
       Math.random() * 100                
     ])
   }
-  var solar = true;
-  var clouds = true;
-  var temp = true;
-  const toggleSolar = () => solar = !solar;
-  const toggleClouds = () => clouds = !clouds;
-  const toggleTemp = () => temp = !temp;
+
+
 
   return (
     <View>
       <View>
-        <DataToggle
+        <Refresh
           refresh_data_i = {refresh_data}
-          toggle_solar = {toggleSolar}
-          toggle_clouds = {toggleClouds}
-          toggle_temp = {toggleTemp}
         />
       </View>
       <View>
