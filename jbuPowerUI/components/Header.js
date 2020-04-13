@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import { StyleSheet, View, Text } from "react-native";
-import {AppLoading} from "expo"
+import { AppLoading } from "expo"
 import * as Font from "expo-font"
 
 import Colors from "../constants/colors";
 
 const fetchData = () => {
   return Font.loadAsync({
-    roboto: require("../assets/fonts/roboto.ttf")
+    'roboto': require("../assets/fonts/roboto.ttf")
   });
 }
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     width: '100%',
-    height: 15,
+    height: 5,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: Colors.primary,
