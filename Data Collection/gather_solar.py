@@ -1,5 +1,4 @@
 import requests
-import datetime
 import os
 
 def gather_solar():
@@ -20,9 +19,7 @@ def gather_solar():
     solar = dict(current_power=None,
                  energy_today=None,
                  energy_lifetime=None,
-                 summary_date=None,
-                 status=None,
-                 time=None)
+                 status=None)
 
     if key is not None:
         url = "https://api.enphaseenergy.com/api/v2/systems/223500/summary?" + key
@@ -34,12 +31,7 @@ def gather_solar():
             solar["current_power"] = solar_raw["current_power"]      # in Wh
             solar["energy_today"] = solar_raw["energy_today"]        # in Wh
             solar["energy_lifetime"] = solar_raw["energy_lifetime"]  # in Wh
-            solar["summary_date"] = solar_raw["summary_date"]        # in yyyy-mm-dd
             solar["status"] = solar_raw["status"]                    # ex. "normal"
-            # There will be multiple data entries per day
-            # so a timestamp is necessary to differentiate
-            solar["time"] = str(datetime.datetime.now())
-
         elif response.status_code == 401:
             print("ERROR " + str(response.status_code) + ": User not properly authenticate. Check API key.")
 

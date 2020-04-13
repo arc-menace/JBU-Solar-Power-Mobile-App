@@ -21,8 +21,7 @@ def gather_weather():
     weather = dict(description=None,
                    temp=None,
                    wind_speed=None,
-                   clouds=None,
-                   time=None)
+                   clouds=None,)
 
     if url is not None:
         response = requests.get(url)
@@ -34,9 +33,6 @@ def gather_weather():
             weather["temp"] = weather_raw["main"]["temp"]               # in Kelvin
             weather["wind_speed"] = weather_raw["wind"]["speed"]        # in meters/second
             weather["clouds"] = weather_raw["clouds"]["all"]            # percentage cloud cover
-            # There will be multiple data entries per day
-            # so a timestamp is necessary to differentiate
-            weather["time"] = str(datetime.datetime.now())
 
         elif response.status_code == 401:
             print("ERROR " + str(response.status_code) + ": User not properly authenticate. Check API key.")

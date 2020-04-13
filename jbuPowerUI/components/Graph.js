@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { View, Dimensions, ScrollView } from "react-native";
+import { View, Dimensions, Text, Platform } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import Colors from "../constants/colors";
-import Refresh from "./Refresh"
+import Refresh from "./Refresh";
 
 //Props:
 //textStyle, title, time_axis, data
@@ -96,7 +96,13 @@ const Graph = props => {
     ])
   }
 
-
+  var vertical_rotate = 0;
+  var font_size = "11";
+  if(Platform.OS == "android" || Platform.OS == "ios"){
+    vertical_rotate = -30;
+    
+    font_size = "10";
+  }
 
   return (
     <View>
@@ -106,7 +112,6 @@ const Graph = props => {
         />
       </View>
       <View>
-        <ScrollView horizontal={true}>
           <LineChart
             data={{
               labels: set_time_axis(),
@@ -117,33 +122,34 @@ const Graph = props => {
               ],
               legend: ["Solar [kWh]", "% Clouds", "Temperature [K]"]
             }}
-            width={Math.floor(Dimensions.get("window").width * 0.9)} // from react-native
+            width={Dimensions.get("window").width - 10} // from react-native
             height={300}
-            yAxisLabel=""
             yAxisSuffix="kWh"
             yAxisInterval={1} // optional, defaults to 1
             fromZero={true}
+            verticalLabelRotation = {vertical_rotate}
             chartConfig={{
               backgroundGradientFrom: Colors.primary,
+              backgroundColor: Colors.primary,
+              backgroundGradientTo: Colors.primary,
               decimalPlaces: 2, // optional, defaults to 2dp
               color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
               labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-              style: {
-                borderRadius: 10
-              },
               propsForDots: {
-                r: "8",
+                r: "4",
                 strokeWidth: "2",
                 stroke: Colors.secondary
+              },
+              propsForLabels: {
+                fontSize: font_size,
               }
             }}
             bezier 
             style={{
-              marginVertical: 8,
-              borderRadius: 6
+              marginVertical: 5,
+              borderRadius: 2
             }}
           />
-        </ScrollView>
       </View>      
     </View>
   );
