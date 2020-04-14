@@ -1,98 +1,86 @@
 export const SOLAR = [
   {
-      "current_power": 77,
-      "energy_today": 5878,
-      "energy_lifetime": 47596895,
-      "summary_date": "2020-04-04",
-      "status": "normal",
-      "time": "23:53:36.137987"
-  },
-  {
       "current_power": 2,
-      "energy_today": 13391,
-      "energy_lifetime": 47612031,
-      "summary_date": "2020-04-06",
+      "energy_today": 18317,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:45:02.458614"
+      "time": "2020-04-14T00:45:02.278755Z"
   },
   {
-      "current_power": 356,
-      "energy_today": 20260,
-      "energy_lifetime": 47625578,
-      "summary_date": "2020-04-07",
+      "current_power": 5,
+      "energy_today": 18310,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:45:02.309569"
+      "time": "2020-04-14T00:30:02.759291Z"
   },
   {
-      "current_power": 164,
-      "energy_today": 9145,
-      "energy_lifetime": 47602805,
-      "summary_date": "2020-04-05",
+      "current_power": 7,
+      "energy_today": 18297,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:45:02.241135"
+      "time": "2020-04-14T00:15:01.690245Z"
   },
   {
-      "current_power": 70,
-      "energy_today": 27082,
-      "energy_lifetime": 47646076,
-      "summary_date": "2020-04-08",
+      "current_power": 7,
+      "energy_today": 18260,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:45:02.092610"
+      "time": "2020-04-14T00:00:03.821531Z"
   },
   {
-      "current_power": 522,
-      "energy_today": 20100,
-      "energy_lifetime": 47625578,
-      "summary_date": "2020-04-07",
+      "current_power": 12,
+      "energy_today": 18216,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:30:03.079824"
+      "time": "2020-04-13T23:45:01.847516Z"
   },
   {
-      "current_power": 2,
-      "energy_today": 13321,
-      "energy_lifetime": 47612031,
-      "summary_date": "2020-04-06",
+      "current_power": 12,
+      "energy_today": 18141,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:30:02.742231"
+      "time": "2020-04-13T23:30:02.139627Z"
   },
   {
-      "current_power": 183,
-      "energy_today": 9051,
-      "energy_lifetime": 47602805,
-      "summary_date": "2020-04-05",
+      "current_power": 11,
+      "energy_today": 18050,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:30:02.615697"
+      "time": "2020-04-13T23:15:02.137710Z"
   },
   {
-      "current_power": 99,
-      "energy_today": 26937,
-      "energy_lifetime": 47646076,
-      "summary_date": "2020-04-08",
+      "current_power": 9,
+      "energy_today": 17948,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:30:02.314128"
+      "time": "2020-04-13T23:00:03.850358Z"
   },
   {
-      "current_power": 86,
-      "energy_today": 5830,
-      "energy_lifetime": 47596895,
-      "summary_date": "2020-04-04",
+      "current_power": 10,
+      "energy_today": 17836,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:26:02.529222"
+      "time": "2020-04-13T22:45:02.383663Z"
   },
   {
-      "current_power": 86,
-      "energy_today": 5830,
-      "energy_lifetime": 47596895,
-      "summary_date": "2020-04-04",
+      "current_power": 10,
+      "energy_today": 17836,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:21:45.709487"
+      "time": "2020-04-13T22:43:41.931476Z"
   },
   {
-      "current_power": 2,
-      "energy_today": 13252,
-      "energy_lifetime": 47612031,
-      "summary_date": "2020-04-06",
+      "current_power": 10,
+      "energy_today": 17836,
+      "energy_lifetime": 47751812,
       "status": "normal",
-      "time": "23:15:02.594602"
+      "time": "2020-04-13T22:43:34.447764Z"
+  },
+  {
+      "current_power": 10,
+      "energy_today": 17836,
+      "energy_lifetime": 47751812,
+      "status": "normal",
+      "time": "2020-04-13T22:43:29.706204Z"
   }
 ];
