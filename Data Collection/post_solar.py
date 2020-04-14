@@ -42,7 +42,7 @@ def post_solar():
         response = s.send(prepared)
         print("DEBUG: Response Code: " + str(response.status_code))
         print("DEBUG: Response Headers: " + str(response.headers))
-        print("DEBUG: Response Data: " + str(response.json))
+        print("DEBUG: Response Data: " + str(response.json()))
     else:
         print("DEBUG: Error with API key")
 
