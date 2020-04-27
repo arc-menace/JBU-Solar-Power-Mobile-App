@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Flatlist } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 const EquivalentPower = props => {
   return(

@@ -1,9 +1,18 @@
-import { SOLAR } from "../../data/dummy-solar-data";
+import {SOLAR} from "../../data/dummy-solar-data";
 
 const initialState = {
-  allSolar: SOLAR,
-};
+  allSolar: SOLAR
+}
 
-export default (state = initialState, action) => {
-  return state;
-};
+
+export default function solarReducer(state = initialState, action) {
+  switch(action.type) {
+    case "FETCH_SOLAR":
+      return {
+        ...state,
+        allSolar: action.payload
+      };
+    default:
+      return state;
+  }
+}

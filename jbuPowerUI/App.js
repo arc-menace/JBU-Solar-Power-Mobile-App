@@ -1,50 +1,33 @@
 import * as React from 'react';
 import { useState } from "react";
-import { StyleSheet, Text } from 'react-native';
-
 import { AppLoading } from "expo"
 import * as Font from "expo-font"
-
-import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import solarReducer from "./store/reducers/solar";
 
 import JBUNavigator from "./components/jbu_power_navigator";
+import {store} from './store/store';
 
-const rootSolarReducer = combineReducers({
-  solar: solarReducer,
-});
-
-const dataStore = createStore(rootSolarReducer);
-
-const fetchData = () => {
+const fetchData = () => { //Load Fonts Asynchronously
   return Font.loadAsync({
-    'roboto': require("./assets/fonts/roboto.ttf")
+    roboto: require("./assets/fonts/roboto.ttf")
   });
 }
 
 export default function App() {  
   const [dataLoaded, setDataLoaded] = useState(false);
-  if(!dataLoaded){
+  if(!dataLoaded){ //Wait for fonts to load
     return (
       <AppLoading
         startAsync={fetchData}
         onFinish={() => setDataLoaded(true)}
-        onError={err => console.log(err)}
+        onError={err => console.log("error with font loading")}
       />
     );
   }
+
   return (
-    <Provider store={dataStore}>
+    <Provider store={store}>
       <JBUNavigator/>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-});

@@ -1,27 +1,8 @@
 import React, {useState} from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { AppLoading } from "expo"
-import * as Font from "expo-font"
-
 import Colors from "../constants/colors";
 
-const fetchData = () => {
-  return Font.loadAsync({
-    'roboto': require("../assets/fonts/roboto.ttf")
-  });
-}
-
 const Header = props => {
-  const [dataLoaded, setDataLoaded] = useState(false);
-  if(!dataLoaded){
-    return (
-      <AppLoading
-        startAsync={fetchData}
-        onFinish={() => setDataLoaded(true)}
-        onError={err => console.log(err)}
-      />
-    );
-  }
   return (
     <View style={styles.headerBase} >
       <Text style={styles.headerTitle}>{props.title}</Text>
@@ -42,7 +23,7 @@ const styles = StyleSheet.create({
   headerTitle: {   
     color: 'white',
     fontSize: 48,
-    fontFamily: 'roboto'
+    fontFamily: "roboto"
   },
 });
 

@@ -6,7 +6,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { HeaderButtons, Item, HeaderButton } from "react-navigation-header-buttons";
-import { Ionicons } from "@expo/vector-icons";
+import { IonIcons } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/HomeScreen";
 import EquivalentPower from "../screens/EquivalentPower";
@@ -18,7 +18,7 @@ const Drawer = createDrawerNavigator();
 
 const CustomHeaderButton = props => {
   return(
-    <HeaderButton {...props} IconComponent={Ionicons} iconSize={25} color={Platform.OS === 'android' ? 'white' : 'grey'} />
+    <HeaderButton {...props} IconComponent={IonIcons} iconSize={25} color={Platform.OS === 'android' ? 'white' : 'grey'} />
   );
 };
 
