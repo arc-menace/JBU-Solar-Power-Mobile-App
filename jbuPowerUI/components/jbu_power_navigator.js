@@ -3,11 +3,9 @@ import { Platform } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { HeaderButtons, Item, HeaderButton } from "react-navigation-header-buttons";
-import { IonIcons } from "@expo/vector-icons";
-
+import { Ionicons } from "@expo/vector-icons";
+import Colors from "../constants/colors";
 import HomeScreen from "../screens/HomeScreen";
 import EquivalentPower from "../screens/EquivalentPower";
 
@@ -16,21 +14,26 @@ const HomeStack = createStackNavigator();
 const EquivalentPowerStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const CustomHeaderButton = props => {
+const CustomHeaderButton = (props) => {
   return(
-    <HeaderButton {...props} IconComponent={IonIcons} iconSize={25} color={Platform.OS === 'android' ? 'white' : 'grey'} />
+    <HeaderButton 
+      {...props} 
+      IconComponent={Ionicons} i
+      conSize={25} 
+      color={Platform.OS === 'android' ? 'white' : 'black'} 
+    />
   );
 };
 
 const defaultStackNavOptions = {
   headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? 'blue' : ''
+    backgroundColor: Platform.OS === 'android' ?  Colors.primary : ''
   },
   headerTitleStyle: {
     fontSize: 28,
     fontFamily: "Roboto"
   },
-  headetTintColor: Platform.OS === 'android' ? 'white' : 'red',
+  headerTintColor: Platform.OS === 'android' ? 'white' : 'black',
   headerTitle: "JBU Solar",
 };
 
@@ -43,7 +46,7 @@ const HomeStackNavigator = () => {
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
             <Item
               title="Menu"
-              iconName="md-more"
+              iconName={Platform.OS === "ios" ? "ios-more" : "md-more"}
               onPress={() => {
                 navigation.toggleDrawer();
               }}
