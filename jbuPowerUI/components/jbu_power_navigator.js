@@ -28,7 +28,7 @@ const defaultStackNavOptions = {
   },
   headerTitleStyle: {
     fontSize: 28,
-    fontFamily: "roboto"
+    fontFamily: "Roboto"
   },
   headetTintColor: Platform.OS === 'android' ? 'white' : 'red',
   headerTitle: "JBU Solar",

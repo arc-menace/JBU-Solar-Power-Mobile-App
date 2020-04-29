@@ -9,7 +9,7 @@ import {store} from './store/store';
 
 const fetchData = () => { //Load Fonts Asynchronously
   return Font.loadAsync({
-    roboto: require("./assets/fonts/roboto.ttf")
+    Roboto: require("./assets/fonts/roboto.ttf")
   });
 }
 

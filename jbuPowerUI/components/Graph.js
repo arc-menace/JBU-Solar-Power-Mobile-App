@@ -27,13 +27,6 @@ const Graph = () => {
   }
   solarData.reverse();
 
-  function updateSolar(){
-    for(var i = 0; i < 48; i++){
-      solarData.push(solar[i].current_power);
-    }
-    solarData.reverse();
-  }
-
   var vertical_rotate = 0;
   var font_size = "10";
   var screen_border = Math.floor(Dimensions.get("window").width * 0.1);
@@ -73,7 +66,7 @@ const Graph = () => {
             },
             propsForLabels: {
               fontSize: font_size,
-              fontFamily: "roboto"
+              fontFamily: "Roboto"
             }
           }}
           bezier
