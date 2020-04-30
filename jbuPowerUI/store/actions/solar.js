@@ -1,9 +1,7 @@
 import Solar from "../../models/solar";
 
 export const fetchSolar = () => {
-  console.log("Hello from action");
   return async (dispatch, getState) => {
-    console.log("before fetch");
     try {
       const response = await fetch('http://ec2-35-174-173-68.compute-1.amazonaws.com/api/solar/', {
         method: 'GET',
@@ -13,14 +11,12 @@ export const fetchSolar = () => {
         }
 
       });
-      console.log("before error check");
       if (!response.ok) {
         const errorData = await response.json();
         console.log(errorData);
 
         // throw error
       }
-      console.log("after error check");
       const responseData = await response.json();
 
       const loadedSolar = [];
@@ -36,7 +32,6 @@ export const fetchSolar = () => {
           )
         );
       }
-      console.log("Before dispatch");
       dispatch({
         type: "FETCH_SOLAR",
         payload: loadedSolar,
@@ -44,6 +39,5 @@ export const fetchSolar = () => {
     } catch (err) {
       console.log(err);
     }
-    console.log("After dispatch");
   };
 };

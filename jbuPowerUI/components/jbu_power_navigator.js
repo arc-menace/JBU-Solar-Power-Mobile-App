@@ -8,18 +8,19 @@ import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/colors";
 import HomeScreen from "../screens/HomeScreen";
 import EquivalentPower from "../screens/EquivalentPower";
-
+import InfoScreen from "../screens/InfoScreen"
 
 const HomeStack = createStackNavigator();
 const EquivalentPowerStack = createStackNavigator();
+const InfoScreenStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const CustomHeaderButton = (props) => {
   return(
     <HeaderButton 
       {...props} 
-      IconComponent={Ionicons} i
-      conSize={25} 
+      IconComponent={Ionicons}
+      iconSize={25} 
       color={Platform.OS === 'android' ? 'white' : 'black'} 
     />
   );
@@ -81,12 +82,35 @@ const EquivalentPowerNavigator = () => {
   );
 }
 
+const InfoScreenNavigator = () => {
+  return(
+    <InfoScreenStack.Navigator
+      screenOptions={({navigation, route}) => ({
+        ...defaultStackNavOptions,
+        headerLeft: () => (
+          <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+            <Item
+              title="Menu"
+              iconName="md-more"
+              onPress={() => {
+                navigation.toggleDrawer();
+              }}
+            />
+          </HeaderButtons>
+        )
+    })}>
+      <InfoScreenStack.Screen name="InfoScreen" component={InfoScreen}/>
+    </InfoScreenStack.Navigator>
+  );
+}
+
 const JBUNavigator = () => {
   return(
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name="Home" component={HomeStackNavigator}/>
         <Drawer.Screen name="Equivalent Power" component={EquivalentPowerNavigator}/>
+        <Drawer.Screen name="Information" component={InfoScreenNavigator}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );

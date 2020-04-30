@@ -1,59 +1,45 @@
-import React, { useEffect, useCallback, useState } from "react";
-import { 
-  StyleSheet,
-  View,
-  Text,
-  FlatList,
-  RefreshControl, } from "react-native";
+import React, {useCallback, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-//import Graph from "../components/Graph";
-import {fetchSolar} from "../store/actions/solar";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 
+import {fetchSolar} from "../store/actions/solar";
+import {fetchWeather} from "../store/actions/weather";
+
+import Graph from "../components/Graph";
+import InfoWidget from "../components/InfoWidget";
 
 const HomeScreen = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const solar = useSelector((state) => state.solar.allSolar);
+  const weather = useSelector((state) => state.weather.allWeather);
+
   const dispatch = useDispatch();
 
   const loadSolar = useCallback(async () => {
-    
-    setIsLoading(true);
     try {
-      await dispatch(fetchSolar()); 
-      
-    } catch (err) {
+      await dispatch(fetchSolar());      
+    } catch (err) { }
+  }, [dispatch]);
 
-    }
-    setIsLoading(false);
+  const loadWeather = useCallback(async () => {
+    try {
+      await dispatch(fetchWeather());
+    } catch(err) { }
   }, [dispatch]);
 
   useEffect(() => {
     loadSolar();
-    console.log("ran loadSolar");
-    console.log(solar);
+    loadWeather();
   }, [dispatch]);
-  console.log("Hello There!");
-  const renderItemHandler = ({ item }) => {
-    return (
-      <View>
-        <Text>{item.current_power}</Text>  
-      </View>
-    );
-  };
+
   return (
-    <View>
-    <Text>There should be text below this</Text>
-    <FlatList
-        refreshControl={
-          <RefreshControl refreshing={isLoading} onRefresh={loadSolar} />
-        }
-        style={{color:"#000000"}}
-        //keyExtractor={(item, index) => item[index].time.toString()}
-        data={solar}
-        renderItem={renderItemHandler}
-      />
-    
-    </View>
+    <SafeAreaView style={styles.screen}>
+      <View style={styles.info}>
+        <InfoWidget weather={weather} solar={solar}/>
+      </View>
+      <View style={styles.graph}>
+        <Graph solar={solar}/>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -61,7 +47,13 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-start"
+  },
+  info: {
+    flex: 2,
+  },
+  graph: {
+    flex: 3,
   }
 });
 
