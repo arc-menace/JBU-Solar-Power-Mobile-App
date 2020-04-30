@@ -28,7 +28,6 @@ const EquivalentPower = (props) => {
   var houses;
   var money;
   var tesla_charges;
-  var washing_machine_loads;
   var timeframe;
 
   if(toggle){
